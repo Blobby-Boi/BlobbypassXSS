@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Blobbypass</title>
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blobbypass</title>
+<style>
     @import url('https://fonts.googleapis.com/css2?family=Varela+Round:wght@400&display=swap');
 
     .container {
@@ -183,7 +184,77 @@
     .bookmark-button span {
       white-space: nowrap;
     }
-  </style>
+
+    .overlay {
+    	position: fixed;
+    	top: 0;
+    	left: 0;
+    	width: 100%;
+    	height: 100%;
+    	background-color: rgba(0, 0, 0, 0.5);
+    	display: none;
+    	justify-content: center;
+    	align-items: center;
+	}
+
+	.prompt-box {
+   		background-color: #fff;
+    	padding: 20px;
+    	border-radius: 8px;
+   		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    	width: 300px;
+    	text-align: center;
+    	position: relative;
+	}
+
+    .prompt-message {
+        font-size: 24px;
+        font-family: 'Varela Round', sans-serif;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .prompt-input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+        font-family: 'Varela Round', sans-serif;
+    }
+
+    .prompt-button {
+        padding: 8px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-family: 'Varela Round', sans-serif;
+    }
+
+    .prompt-button:hover {
+        background-color: #0056b3;
+    }
+    
+    .close-button {
+   	    position: absolute;
+        top: 5px;
+        right: 5px;
+        background-color: transparent;
+        border: none;
+        color: #333;
+        font-size: 16px;
+        cursor: pointer;
+        z-index: 1;
+	}
+
+.close-button:hover {
+        color: #000;
+	}
+</style>
 </head>
 <body>
   <div class="container">
@@ -198,6 +269,15 @@
     <div class="rectangle">
       <div class="bookmark-container" id="bookmarkButtons"></div>
       <button class="add-bookmark-button" onclick="addBookmark()">Save as Bookmark</button>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay">
+    <div class="prompt-box">
+        <button class="close-button" onclick="closePrompt()">X</button>
+        <p class="prompt-message" id="prompt-message"></p>
+        <input type="text" class="prompt-input" id="prompt-input">
+        <button class="prompt-button" onclick="submitPrompt()">OK</button>
     </div>
   </div>
 
@@ -232,26 +312,41 @@
       return !!pattern.test(str);
     }
 
+    async function customPrompt(message, defaultValue) {
+      document.getElementById("prompt-message").innerText = message;
+      document.getElementById("prompt-input").value = defaultValue || "";
+      document.getElementById("overlay").style.display = "flex";
+
+      return new Promise(resolve => {
+        submitPrompt = function() {
+          var userInput = document.getElementById("prompt-input").value;
+          document.getElementById("overlay").style.display = "none";
+          resolve(userInput);
+          submitPrompt = null;
+        }
+      });
+    }
+
     function addBookmark() {
       var input = document.getElementById('url').value;
-      var bookmarkName = prompt("Enter bookmark name:");
+      customPrompt("Enter bookmark name:").then(function(bookmarkName) {
+        if (!bookmarkName) return;
 
-      if (!bookmarkName) return;
+        if (!isValidURL(input)) {
+          bookmarks.push({ name: bookmarkName, url: 'https://www.google.com/search?q=' + encodeURIComponent(input) });
+          renderBookmarkButtons();
+          saveBookmarks();
+          return;
+        }
 
-      if (!isValidURL(input)) {
-        bookmarks.push({ name: bookmarkName, url: 'https://www.google.com/search?q=' + encodeURIComponent(input) });
+        if (!input.startsWith('http://') && !input.startsWith('https://')) {
+          input = 'https://' + input;
+        }
+
+        bookmarks.push({ name: bookmarkName, url: input });
         renderBookmarkButtons();
         saveBookmarks();
-        return;
-      }
-
-      if (!input.startsWith('http://') && !input.startsWith('https://')) {
-        input = 'https://' + input;
-      }
-
-      bookmarks.push({ name: bookmarkName, url: input });
-      renderBookmarkButtons();
-      saveBookmarks();
+      });
     }
 
     function renderBookmarkButtons() {
@@ -319,6 +414,10 @@
     function saveBookmarks() {
       localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
     }
+    
+    function closePrompt() {
+   	  document.getElementById("overlay").style.display = "none";
+	}
   </script>
 </body>
 </html>
