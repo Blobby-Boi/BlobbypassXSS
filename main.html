@@ -290,7 +290,7 @@
       var url;
 
       if (isValidURL(input)) {
-        if (!input.startsWith('http') && !input.startsWith('https')) {
+        if (!input.startsWith('http')) {
           url = 'https://' + input;
         } else {
           url = input;
