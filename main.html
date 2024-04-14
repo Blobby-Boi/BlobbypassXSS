@@ -302,14 +302,10 @@
       window.open(url, '_blank');
     }
 
-    function isValidURL(str) {
- 	 try {
- 	   new URL(str);
- 	   return true;
- 	 } catch (error) {
-	    return false;
-	  }
-	}
+   function isValidURL(str) {
+	const pattern = /^(https?:\/\/)?([\w\d-]+\.)+[\w]{2,}(\/.*)?$/;
+	return pattern.test(str);
+    }
 
     async function customPrompt(message, defaultValue) {
       document.getElementById("prompt-message").innerText = message;
