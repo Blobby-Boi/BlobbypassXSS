@@ -374,7 +374,9 @@
         button.appendChild(deleteButton);
 
         button.onclick = function() {
-          window.open(bookmark.url, '_blank');
+          if (!window.open(bookmark.url, '_blank')) {
+            window.location.href = bookmark.url;
+          }
         };
         container.appendChild(button);
       });
