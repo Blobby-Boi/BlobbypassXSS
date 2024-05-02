@@ -240,7 +240,7 @@
     }
     
     .close-button {
-   	    position: absolute;
+   	position: absolute;
         top: 5px;
         right: 5px;
         background-color: transparent;
@@ -299,8 +299,8 @@
         url = 'https://www.google.com/search?q=' + encodeURIComponent(input);
       }
 
-      if (!window.open('https://example.com', '_blank')) {
-        window.location.href = 'https://example.com';
+      if (!window.open(url, '_blank')) {
+        window.location.href = url;
       }
     }
 
