@@ -299,7 +299,9 @@
         url = 'https://www.google.com/search?q=' + encodeURIComponent(input);
       }
 
-      window.open(url, '_blank');
+      if (!window.open('https://example.com', '_blank')) {
+        window.location.href = 'https://example.com';
+      }
     }
 
    function isValidURL(str) {
