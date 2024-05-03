@@ -10,9 +10,21 @@ function openPopup() {
     if (newWindow) {
         // If newWindow is not null, the pop-up window was successfully opened
         console.log("Pop-up window opened successfully!");
+        
+        // Check if the window is visible
+        if (!newWindow.closed) {
+            // The window is open and visible
+            console.log("Pop-up window is visible to the user.");
+        } else {
+            // The window might have been closed immediately
+            console.log("Pop-up window might be closed.");
+        }
     } else {
         // If newWindow is null, the pop-up window might have been blocked
         console.log("Pop-up window blocked by the browser's pop-up blocker.");
+        
+        // Redirect to example.com if the pop-up window couldn't be opened
+        window.location.href = "https://example.com";
     }
 }
 </script>
