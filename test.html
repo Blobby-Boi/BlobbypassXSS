@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Open Window</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pop-up Window Test</title>
+<script>
+function openPopup() {
+    var newWindow = window.open("https://example.com", "_blank");
+    if (newWindow) {
+        // If newWindow is not null, the pop-up window was successfully opened
+        console.log("Pop-up window opened successfully!");
+    } else {
+        // If newWindow is null, the pop-up window might have been blocked
+        console.log("Pop-up window blocked by the browser's pop-up blocker.");
+    }
+}
+</script>
 </head>
 <body>
-  <button id="openButton">Open Window</button>
 
-  <script>
-    // Function to handle button click
-    function handleClick() {
-      // Check if window.open is supported
-      if (window.open) {
-        // window.open is supported, so open a new window
-        window.open("https://example.com", "_blank");
-      } else {
-        // window.open is not supported, navigate to URL
-        window.location.href = "https://example.com";
-      }
-    }
+<button onclick="openPopup()">Open Pop-up Window</button>
 
-    // Add click event listener to the button
-    document.getElementById("openButton").addEventListener("click", handleClick);
-  </script>
 </body>
 </html>
