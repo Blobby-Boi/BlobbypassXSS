@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open Example</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Window</title>
 </head>
 <body>
-    <button onclick="openExample()">Open Example</button>
+  <button id="openButton">Open Window</button>
 
-    <script>
-        function canOpenWindow() {
-            return typeof window.open === 'function';
-        }
+  <script>
+    // Function to handle button click
+    function handleClick() {
+      // Check if window.open is supported
+      if (window.open) {
+        // window.open is supported, so open a new window
+        window.open("https://example.com", "_blank");
+      } else {
+        // window.open is not supported, navigate to URL
+        window.location.href = "https://example.com";
+      }
+    }
 
-        function openExample() {
-            if (canOpenWindow()) {
-                window.open('https://example.com', '_blank');
-            } else {
-                window.location.href = 'https://example.com';
-            }
-        }
-    </script>
+    // Add click event listener to the button
+    document.getElementById("openButton").addEventListener("click", handleClick);
+  </script>
 </body>
 </html>
