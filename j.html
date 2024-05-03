@@ -6,7 +6,6 @@
 <title>Example</title>
 </head>
 <body>
-<p>Value of window.open: <span id="windowOpenValue"></span></p>
 <script>
     function redirectToURL(url) {
         var newWindow = window.open(url);
@@ -17,7 +16,7 @@
             } else {
                 document.getElementById("windowOpenValue").textContent = "Opened";
             }
-        }, 1000); // Adjust the delay as needed
+        }, 100);
     }
     
     redirectToURL("https://example.com");
