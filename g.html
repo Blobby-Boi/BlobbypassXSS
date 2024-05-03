@@ -9,9 +9,10 @@
 <p>Value of window.open: <span id="windowOpenValue"></span></p>
 <script>
     function redirectToURL(url) {
-        var windowOpenValue = window.open;
+        var newWindow = window.open(url);
+        var windowOpenValue = newWindow || "Blocked";
         document.getElementById("windowOpenValue").textContent = windowOpenValue;
-        if (windowOpenValue === undefined || windowOpenValue(url) === null) {
+        if (windowOpenValue === "Blocked") {
             window.location.href = url;
         }
     }
