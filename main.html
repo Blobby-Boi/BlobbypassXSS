@@ -299,9 +299,10 @@
         url = 'https://www.google.com/search?q=' + encodeURIComponent(input);
       }
 
-      if (!window.open(url, '_blank') || window.closed || typeof window.closed == 'undefined') {
+	var blobbypass = window.open(url, '_blank');
+        if (!blobbypass || blobbypass.closed || typeof blobbypass.closed=='undefined') {
                 window.location.href = url;
-        }
+            }
     }
 
    function isValidURL(str) {
@@ -374,8 +375,9 @@
         button.appendChild(deleteButton);
 
         button.onclick = function() {
-          if (!window.open(bookmark.url, '_blank') || window.closed || typeof window.closed == 'undefined') {
-                window.location.href = bookmark.url;
+	    var blobbypass = window.open(url, '_blank');
+            if (!blobbypass || blobbypass.closed || typeof blobbypass.closed=='undefined') {
+                window.location.href = url;
             }
         };
         container.appendChild(button);
