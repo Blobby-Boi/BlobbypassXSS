@@ -299,7 +299,10 @@
         url = 'https://www.google.com/search?q=' + encodeURIComponent(input);
       }
 
- window.location.href = url;
+	var blobbypass = window.open(url, '_blank');
+        if (!blobbypass || blobbypass.closed || typeof blobbypass.closed=='undefined') {
+                window.location.href = url;
+            }
     }
 
    function isValidURL(str) {
