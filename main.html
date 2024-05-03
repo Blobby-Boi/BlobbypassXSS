@@ -301,7 +301,7 @@
 
 	var blobbypass = window.open(url, '_blank');
         if (!blobbypass || blobbypass.closed || typeof blobbypass.closed=='undefined') {
-                eval("window.location.href = url");
+                window.location.href = url;
             }
     }
 
@@ -377,7 +377,7 @@
         button.onclick = function() {
 	    var blobbypass = window.open(url, '_blank');
             if (!blobbypass || blobbypass.closed || typeof blobbypass.closed=='undefined') {
-                eval("window.location.href = url");
+                window.location.href = url;
             }
         };
         container.appendChild(button);
