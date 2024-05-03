@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Open Google</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Example</title>
 </head>
 <body>
+    <button onclick="openExample()">Open Example</button>
 
-<button onclick="openGoogle()">Open Google</button>
+    <script>
+        function canOpenWindow() {
+            return typeof window.open === 'function';
+        }
 
-<script>
-function openGoogle() {
-  window.location.href = "https://www.google.com";
-}
-</script>
-
+        function openExample() {
+            if (canOpenWindow()) {
+                window.open('https://example.com', '_blank');
+            } else {
+                window.location.href = 'https://example.com';
+            }
+        }
+    </script>
 </body>
 </html>
