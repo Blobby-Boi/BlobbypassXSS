@@ -300,9 +300,9 @@
       }
 
 	var blobbypass = window.open(url, '_blank');
-        if (!blobbypass || blobbypass.closed || typeof blobbypass.closed=='undefined') {
+        blobbypass.onerror = function() {
                 window.location.href = url;
-            }
+            };
     }
 
    function isValidURL(str) {
@@ -375,10 +375,10 @@
         button.appendChild(deleteButton);
 
         button.onclick = function() {
-	    var blobbypass = window.open(url, '_blank');
-            if (!blobbypass || blobbypass.closed || typeof blobbypass.closed=='undefined') {
-                window.location.href = url;
-            }
+	    var blobbypass = window.open(bookmark.url, '_blank');
+            blobbypass.onerror = function() {
+                window.location.href = bookmark.url;
+            };
         };
         container.appendChild(button);
       });
