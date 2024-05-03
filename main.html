@@ -299,15 +299,15 @@
         url = 'https://www.google.com/search?q=' + encodeURIComponent(input);
       }
 
-     var newWindow = window.open(url);
-     setTimeout(function() {
-        var windowOpenValue = newWindow || "Blocked";
-        if (windowOpenValue === "Blocked" || !newWindow || newWindow.closed || typeof newWindow.closed === "undefined") {
-          window.location.href = url;
-        } else {
-          document.getElementById("windowOpenValue").textContent = "Opened";
-        }
-    }, 100);
+     var blobbypass = window.open(url);
+     blobbypass.addEventListener('load', function() {
+            var windowOpenValue = blobbypass || "Blocked";
+            if (windowOpenValue === "Blocked" || !blobbypass || blobbypass.closed || typeof blobbypass.closed === "undefined") {
+                window.location.href = url;
+            } else {
+                document.getElementById("windowOpenValue").textContent = "Opened";
+            }
+        });
     }
 
    function isValidURL(str) {
@@ -380,15 +380,15 @@
         button.appendChild(deleteButton);
 
         button.onclick = function() {
-	  var newWindow = window.open(bookmark.url);
-          setTimeout(function() {
-            var windowOpenValue = newWindow || "Blocked";
-            if (windowOpenValue === "Blocked" || !newWindow || newWindow.closed || typeof newWindow.closed === "undefined") {
+        var blobbypass = window.open(bookmark.url);
+        blobbypass.addEventListener('load', function() {
+            var windowOpenValue = blobbypass || "Blocked";
+            if (windowOpenValue === "Blocked" || !blobbypass || blobbypass.closed || typeof blobbypass.closed === "undefined") {
                 window.location.href = bookmark.url;
             } else {
                 document.getElementById("windowOpenValue").textContent = "Opened";
             }
-         }, 100);
+          });
         };
         container.appendChild(button);
       });
