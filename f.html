@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Example</title>
+</head>
+<body>
+<p>Value of window.open: <span id="windowOpenValue"></span></p>
+<script>
+    function redirectToURL(url) {
+        var windowOpenValue = window.open;
+        document.getElementById("windowOpenValue").textContent = windowOpenValue;
+        if (windowOpenValue === undefined || windowOpenValue(url) === null) {
+            window.location.href = url;
+        }
+    }
+    
+    redirectToURL("https://example.com");
+</script>
+</body>
+</html>
