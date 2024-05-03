@@ -11,9 +11,10 @@
     function redirectToURL(url) {
         var newWindow = window.open(url);
         var windowOpenValue = newWindow || "Blocked";
-        document.getElementById("windowOpenValue").textContent = windowOpenValue;
-        if (windowOpenValue === "Blocked") {
+        if (windowOpenValue === "Blocked" || windowOpenValue.closed || typeof windowOpenValue.closed === "undefined") {
             window.location.href = url;
+        } else {
+            document.getElementById("windowOpenValue").textContent = "Opened";
         }
     }
     
