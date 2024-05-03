@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Example</title>
+</head>
+<body>
+<p>Value of window.open: <span id="windowOpenValue"></span></p>
+<script>
+    function redirectToURL(url) {
+        var newWindow = window.open('about:blank', '_blank');
+        setTimeout(function() {
+            var windowOpenValue = newWindow || "Blocked";
+            if (windowOpenValue === "Blocked" || !newWindow || newWindow.closed || typeof newWindow.closed === "undefined") {
+                window.location.href = url;
+            } else {
+                newWindow.location.href = url;
+                document.getElementById("windowOpenValue").textContent = "Opened";
+            }
+        }, 1000); // Adjust the delay as needed
+    }
+    
+    redirectToURL("https://example.com");
+</script>
+</body>
+</html>
