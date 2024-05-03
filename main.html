@@ -299,15 +299,15 @@
         url = 'https://www.google.com/search?q=' + encodeURIComponent(input);
       }
 
-     var blobbypass = window.open(url);
-     blobbypass.addEventListener('load', function() {
+        var blobbypass = window.open('about:blank', '_blank');
+        setTimeout(function() {
             var windowOpenValue = blobbypass || "Blocked";
             if (windowOpenValue === "Blocked" || !blobbypass || blobbypass.closed || typeof blobbypass.closed === "undefined") {
                 window.location.href = url;
             } else {
-                document.getElementById("windowOpenValue").textContent = "Opened";
+                blobbypass.location.href = url;
             }
-        });
+        }, 100);
     }
 
    function isValidURL(str) {
@@ -380,15 +380,15 @@
         button.appendChild(deleteButton);
 
         button.onclick = function() {
-        var blobbypass = window.open(bookmark.url);
-        blobbypass.addEventListener('load', function() {
+        var blobbypass = window.open('about:blank', '_blank');
+        setTimeout(function() {
             var windowOpenValue = blobbypass || "Blocked";
             if (windowOpenValue === "Blocked" || !blobbypass || blobbypass.closed || typeof blobbypass.closed === "undefined") {
                 window.location.href = bookmark.url;
             } else {
-                document.getElementById("windowOpenValue").textContent = "Opened";
+                blobbypass.location.href = bookmark.url;
             }
-          });
+         }, 100);
         };
         container.appendChild(button);
       });
