@@ -1,1 +1,1 @@
-window.location.href="https://tinyurl.com/blobbypassBLOCKED"
+window.location.href="https://blobby-boi.github.io/BlobbypassXSS/blocked.html"
