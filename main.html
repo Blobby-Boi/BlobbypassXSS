@@ -299,10 +299,7 @@
         url = 'https://www.google.com/search?q=' + encodeURIComponent(input);
       }
 
-        var blobbypass = window.open();
-	var blobbypassDocument = blobbypass.document;
-        blobbypassDocument.documentElement.style.backgroundColor = "black";
-        blobbypassDocument.body.innerHTML = "<div style='color: white; font-size: 25px; font-family: sans-serif; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'>Loading...</div>";
+        var blobbypass = window.open('loading.html');
         setTimeout(function() {
             var windowOpenValue = blobbypass || "Blocked";
             if (windowOpenValue === "Blocked" || !blobbypass || blobbypass.closed || typeof blobbypass.closed === "undefined") {
@@ -383,10 +380,7 @@
         button.appendChild(deleteButton);
 
         button.onclick = function() {
-        var blobbypass = window.open();
-	var blobbypassDocument = blobbypass.document;
-        blobbypassDocument.documentElement.style.backgroundColor = "black";
-        blobbypassDocument.body.innerHTML = "<div style='color: white; font-size: 25px; font-family: sans-serif; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'>Loading...</div>";
+        var blobbypass = window.open('loading.html');
         setTimeout(function() {
             var windowOpenValue = blobbypass || "Blocked";
             if (windowOpenValue === "Blocked" || !blobbypass || blobbypass.closed || typeof blobbypass.closed === "undefined") {
