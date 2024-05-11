@@ -299,8 +299,19 @@
         url = 'https://www.google.com/search?q=' + encodeURIComponent(input);
       }
 
+        var iframe = document.createElement('iframe');
+        iframe.src = 'loading.html';
+        iframe.style.position = 'fixed';
+        iframe.style.top = '0';
+        iframe.style.left = '0';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.border = 'none';
+        document.body.appendChild(iframe);
+	    
         var blobbypass = window.open('loading.html');
         setTimeout(function() {
+	    document.body.removeChild(iframe);
             var windowOpenValue = blobbypass || "Blocked";
             if (windowOpenValue === "Blocked" || !blobbypass || blobbypass.closed || typeof blobbypass.closed === "undefined") {
                 window.location.href = url;
@@ -380,8 +391,18 @@
         button.appendChild(deleteButton);
 
         button.onclick = function() {
+	var iframe = document.createElement('iframe');
+        iframe.src = 'loading.html';
+        iframe.style.position = 'fixed';
+        iframe.style.top = '0';
+        iframe.style.left = '0';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.border = 'none';
+	document.body.appendChild(iframe);
         var blobbypass = window.open('loading.html');
         setTimeout(function() {
+	    document.body.removeChild(iframe);
             var windowOpenValue = blobbypass || "Blocked";
             if (windowOpenValue === "Blocked" || !blobbypass || blobbypass.closed || typeof blobbypass.closed === "undefined") {
                 window.location.href = bookmark.url;
