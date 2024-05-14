@@ -311,12 +311,12 @@
 	    
         var blobbypass = window.open('loading.html');
         setTimeout(function() {
-	    document.body.removeChild(iframe);
             var windowOpenValue = blobbypass || "Blocked";
             if (windowOpenValue === "Blocked" || !blobbypass || blobbypass.closed || typeof blobbypass.closed === "undefined") {
                 window.location.href = url;
             } else {
                 blobbypass.location.href = url;
+		document.body.removeChild(iframe);
             }
         }, 1000);
     }
@@ -402,12 +402,12 @@
 	document.body.appendChild(iframe);
         var blobbypass = window.open('loading.html');
         setTimeout(function() {
-	    document.body.removeChild(iframe);
             var windowOpenValue = blobbypass || "Blocked";
             if (windowOpenValue === "Blocked" || !blobbypass || blobbypass.closed || typeof blobbypass.closed === "undefined") {
                 window.location.href = bookmark.url;
             } else {
                 blobbypass.location.href = bookmark.url;
+		document.body.removeChild(iframe);
             }
          }, 1000);
         };
