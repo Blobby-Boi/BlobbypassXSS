@@ -316,9 +316,7 @@
                 window.location.href = url;
             } else {
                 blobbypass.location.href = url;
-		blobbypass.onload = function() {
-       		    document.body.removeChild(iframe);
-    		  };
+		document.body.removeChild(iframe);
             }
         }, 1000);
     }
@@ -409,9 +407,7 @@
                 window.location.href = bookmark.url;
             } else {
                 blobbypass.location.href = bookmark.url;
-		blobbypass.onload = function() {
-       		    document.body.removeChild(iframe);
-    		  };
+		document.body.removeChild(iframe);
             }
          }, 1000);
         };
