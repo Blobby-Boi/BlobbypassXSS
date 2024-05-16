@@ -531,6 +531,7 @@ var overlay = document.createElement('div');
   overlay.classList.add('edit-overlay');
   var editOptions = document.createElement('div');
   editOptions.classList.add('edit-options');
+  editOptions.style.position = 'relative';
 
   var editNameButton = document.createElement('button');
   editNameButton.textContent = "Edit Name";
@@ -547,6 +548,16 @@ var overlay = document.createElement('div');
     document.body.removeChild(overlay);
   };
   editOptions.appendChild(editUrlButton);
+
+  var closeButton = document.createElement('button');
+  closeButton.textContent = "X";
+  closeButton.classList.add('close-button');
+  closeButton.style.top = 'calc(50% - 35.5px)';
+  closeButton.style.right = 'calc(50% - 116px)';
+  closeButton.onclick = function() {
+    document.body.removeChild(overlay);
+  };
+  overlay.appendChild(closeButton);
 
   document.body.appendChild(editOptions);
   
