@@ -256,16 +256,18 @@
 	}
     
     .edit-button {
-    background-color: transparent;
-    border: none;
-    color: #ADD8E6;
-    font-size: 16px;
-    cursor: pointer;
-    margin-right: 5px;
+      position: absolute;
+      top: 20px;
+      right: 5px;
+      background-color: transparent;
+      border: none;
+      color: #a19100;
+      font-size: 13px;
+      cursor: pointer;
 }
 
 .edit-button:hover {
-    color: #87CEEB;
+    color: #524900;
 }
 
 .edit-overlay {
@@ -448,7 +450,7 @@
 
 	var editButton = document.createElement('button');
    	editButton.className = 'edit-button';
-   	editButton.textContent = '✏️';
+   	editButton.textContent = '🖉';
     	editButton.onclick = function(event) {
         event.stopPropagation();
         editBookmark(bookmark);
