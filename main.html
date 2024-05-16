@@ -446,14 +446,14 @@
         };
         button.appendChild(deleteButton);
 
-		var editButton = document.createElement('button');
-   		editButton.className = 'edit-button';
-   		editButton.textContent = '✏️';
+	var editButton = document.createElement('button');
+   	editButton.className = 'edit-button';
+   	editButton.textContent = '✏️';
     	editButton.onclick = function(event) {
         event.stopPropagation();
         editBookmark(bookmark);
     	};
-   		button.appendChild(editButton);
+   	button.appendChild(editButton);
     
         button.onclick = function() {
 	var iframe = document.createElement('iframe');
