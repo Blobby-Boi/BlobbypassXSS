@@ -368,7 +368,8 @@
         var blobbypass = window.open('loading.html');
         setTimeout(function() {
             var windowOpenValue = blobbypass || "Blocked";
-            if (windowOpenValue === "Blocked" || !blobbypass || blobbypass.closed || typeof blobbypass.closed === "undefined") {
+	    var shiftPressed = window.event.shiftKey;
+  	    if (shiftPressed || windowOpenValue === "Blocked" || !blobbypass || blobbypass.closed || typeof blobbypass.closed === "undefined") {
                 window.location.href = url;
             } else {
                 blobbypass.location.href = url;
@@ -470,7 +471,8 @@
         var blobbypass = window.open('loading.html');
         setTimeout(function() {
             var windowOpenValue = blobbypass || "Blocked";
-            if (windowOpenValue === "Blocked" || !blobbypass || blobbypass.closed || typeof blobbypass.closed === "undefined") {
+            var shiftPressed = window.event.shiftKey;
+  	    if (shiftPressed || windowOpenValue === "Blocked" || !blobbypass || blobbypass.closed || typeof blobbypass.closed === "undefined") {
                 window.location.href = bookmark.url;
             } else {
                 blobbypass.location.href = bookmark.url;
