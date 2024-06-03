@@ -354,6 +354,12 @@
       } else {
         url = 'https://www.google.com/search?q=' + encodeURIComponent(input);
       }
+      
+        var isShiftPressed = event.shiftKey;
+        if (isShiftPressed) {
+          window.location.href = url;
+          return;
+        }
 
         var iframe = document.createElement('iframe');
         iframe.src = 'loading.html';
@@ -458,6 +464,13 @@
    	button.appendChild(editButton);
     
         button.onclick = function() {
+        
+        var isShiftPressed = event.shiftKey;
+        if (isShiftPressed) {
+          window.location.href = bookmark.url;
+          return;
+        }
+        
 	var iframe = document.createElement('iframe');
         iframe.src = 'loading.html';
         iframe.style.position = 'fixed';
