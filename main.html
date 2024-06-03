@@ -400,10 +400,7 @@
     }
 
     function addBookmark() {
-      var input = document.getElementById('url').value;
-      if (!input) {
-        return;
-      }	    
+      var input = document.getElementById('url').value; 
       customPrompt("Enter bookmark name:").then(function(bookmarkName) {
         if (!bookmarkName) return;
 
