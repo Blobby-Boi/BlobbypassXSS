@@ -368,8 +368,7 @@
         var blobbypass = window.open('loading.html');
         setTimeout(function() {
             var windowOpenValue = blobbypass || "Blocked";
-	    var shiftPressed = window.event.shiftKey;
-  	    if (shiftPressed || windowOpenValue === "Blocked" || !blobbypass || blobbypass.closed || typeof blobbypass.closed === "undefined") {
+  	    if (windowOpenValue === "Blocked" || !blobbypass || blobbypass.closed || typeof blobbypass.closed === "undefined") {
                 window.location.href = url;
             } else {
                 blobbypass.location.href = url;
@@ -471,8 +470,7 @@
         var blobbypass = window.open('loading.html');
         setTimeout(function() {
             var windowOpenValue = blobbypass || "Blocked";
-            var shiftPressed = window.event.shiftKey;
-  	    if (shiftPressed || windowOpenValue === "Blocked" || !blobbypass || blobbypass.closed || typeof blobbypass.closed === "undefined") {
+  	    if (windowOpenValue === "Blocked" || !blobbypass || blobbypass.closed || typeof blobbypass.closed === "undefined") {
                 window.location.href = bookmark.url;
             } else {
                 blobbypass.location.href = bookmark.url;
@@ -595,6 +593,12 @@ var overlay = document.createElement('div');
     function closePrompt() {
    	  document.getElementById("overlay").style.display = "none";
 	}
+
+    document.getElementById('url').addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        redirect(event);
+      }
+    });
   </script>
 </body>
 </html>
