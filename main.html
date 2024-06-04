@@ -375,7 +375,11 @@
         setTimeout(function() {
             var windowOpenValue = blobbypass || "Blocked";
   	    if (windowOpenValue === "Blocked" || !blobbypass || blobbypass.closed || typeof blobbypass.closed === "undefined") {
-                window.location.href = url;
+                try {
+            	   window.location.href = url;
+      		    } catch (e) {
+       		   window.location.href = url + "/?";
+      		  }
             } else {
                 blobbypass.location.href = url;
 		setTimeout(function() {
@@ -484,7 +488,11 @@
         setTimeout(function() {
             var windowOpenValue = blobbypass || "Blocked";
   	    if (windowOpenValue === "Blocked" || !blobbypass || blobbypass.closed || typeof blobbypass.closed === "undefined") {
-                window.location.href = bookmark.url;
+                try {
+            	   window.location.href = bookmark.url;
+      		    } catch (e) {
+       		   window.location.href = bookmark.url + "/?";
+      		  }
             } else {
                 blobbypass.location.href = bookmark.url;
 		setTimeout(function() {
