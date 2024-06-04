@@ -357,12 +357,11 @@
       
         var isShiftPressed = event.shiftKey;
         if (isShiftPressed) {
-          try {
-            	 window.location.href = url;
-      		} catch (e) {
-       		 window.location.href = url + "/?";
-      	      }
-          return;
+            window.location.href = url;
+	    setTimeout(function() {
+       	      window.location.href = url + "/?";
+	    }, 100);
+            return;
         }
 
         var iframe = document.createElement('iframe');
@@ -471,12 +470,11 @@
         
         var isShiftPressed = event.shiftKey;
         if (isShiftPressed) {
-           try {
-            	window.location.href = bookmark.url;
-      		 } catch (e) {
-       		window.location.href = bookmark.url + "/?";
-      		}
-          return;
+           window.location.href = bookmark.url;
+	    setTimeout(function() {
+       	      window.location.href = bookmark.url + "/?";
+	    }, 100);
+            return;
         }
         
 	var iframe = document.createElement('iframe');
