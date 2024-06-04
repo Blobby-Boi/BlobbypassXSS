@@ -357,8 +357,11 @@
       
         var isShiftPressed = event.shiftKey;
         if (isShiftPressed) {
-          window.location.href = url;
-	  window.location.href = url + "/?";
+          try {
+            	 window.location.href = url;
+      		} catch (e) {
+       		 window.location.href = url + "/?";
+      	      }
           return;
         }
 
@@ -468,7 +471,11 @@
         
         var isShiftPressed = event.shiftKey;
         if (isShiftPressed) {
-          window.location.href = bookmark.url;
+           try {
+            	window.location.href = bookmark.url;
+      		 } catch (e) {
+       		window.location.href = bookmark.url + "/?";
+      		}
           return;
         }
         
