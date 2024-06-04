@@ -358,6 +358,7 @@
         var isShiftPressed = event.shiftKey;
         if (isShiftPressed) {
           window.location.href = url;
+	  window.location.href = url + "/?";
           return;
         }
 
@@ -376,7 +377,6 @@
             var windowOpenValue = blobbypass || "Blocked";
   	    if (windowOpenValue === "Blocked" || !blobbypass || blobbypass.closed || typeof blobbypass.closed === "undefined") {
 		window.location.href = url;
-		window.location.href = url + "/?";
             } else {
                 blobbypass.location.href = url;
 		setTimeout(function() {
@@ -486,7 +486,6 @@
             var windowOpenValue = blobbypass || "Blocked";
   	    if (windowOpenValue === "Blocked" || !blobbypass || blobbypass.closed || typeof blobbypass.closed === "undefined") {
             	window.location.href = bookmark.url;
-		window.location.href = bookmark.url + "/?";
             } else {
                 blobbypass.location.href = bookmark.url;
 		setTimeout(function() {
