@@ -116,8 +116,16 @@
         function onPlayerReady(event) {
             setInterval(() => {
                 let currentTime = player.getCurrentTime();
+                let duration = player.getDuration();
+                let videoData = player.getVideoData();
 
-                if (currentTime > 0.5 && currentTime > lastTime + 0.06 && !isTabSwitched && isTabActive) { 
+                if (videoData.title === "" || duration === 0) {
+                    isAdPlaying = true;
+                } else {
+                    isAdPlaying = false;
+                }
+
+                if (!isAdPlaying && currentTime > 0.5 && currentTime > lastTime + 0.06 && !isTabSwitched && isTabActive) { 
                     showPopup('popup');
                     player.destroy();
                     let iframe = document.createElement('iframe');
