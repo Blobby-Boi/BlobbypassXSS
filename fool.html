@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Just one more thing...</title>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Varela Round', sans-serif;
+    }
+
+    body {
+      background-color: black;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      flex-direction: column;
+      user-select: none;
+    }
+
+    input {
+      font-size: 24px;
+      padding: 10px;
+      margin-top: 20px;
+      width: 300px;
+      text-align: center;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 20px;
+      background-color: white;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: gray;
+    }
+
+    #response {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+  </style>
+  <script>
+    function checkSentence() {
+      const input = document.getElementById('sentenceInput').value;
+      const output = document.getElementById('response');
+
+      if (input === 'I AM GAY') {
+        output.textContent = 'Good Boy!';
+        output.style.color = '#66ff66';
+        setTimeout(() => {
+          window.location.href = 'https://blobby-boi.github.io/BlobbypassXSS/fooled.html';
+        }, 1500);
+      } else if (input.toUpperCase() === 'I AM GAY') {
+        output.textContent = 'SAY IT LOUDER (use caps)';
+        output.style.color = 'red';
+      } else {
+        output.textContent = 'Say it :)';
+        output.style.color = 'red';
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Almost there! Just one more thing...</h1>
+  <p>Please type "I am gay" into the input below:</p>
+  <input type="text" id="sentenceInput" />
+  <button onclick="checkSentence()">Submit</button>
+  <p id="response"></p>
+</body>
+</html>
