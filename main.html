@@ -69,7 +69,7 @@
             text-align: center;
             flex-direction: column;
         }
-        #closeDontLeave {
+        #closeButton {
             margin-top: 20px;
             padding: 10px 30px;
             background-color: #333;
@@ -93,7 +93,7 @@
 
         <div id="popup2">
             Bro thought they were smart 🤣<br>
-            <button id="closeDontLeave">Restart the whole video (L bozo)</button>
+            <button id="closeButton">Restart the whole video (L bozo)</button>
         </div>
     </div>
 
@@ -179,7 +179,7 @@
             }
         });
 
-        document.getElementById('closeDontLeave').addEventListener('click', () => {
+        document.getElementById('closeButton').addEventListener('click', () => {
             popup2.style.display = 'none';
             videoElement.play();
         });
