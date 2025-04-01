@@ -128,12 +128,12 @@
 
             videoElement.addEventListener('ended', onVideoEnded);
 
-            setInterval(checkVideoProgress, 50);
+            setInterval(checkVideoProgress, 25);
         }
 
         function checkVideoProgress() {
             let currentTime = videoElement.currentTime;
-            if (currentTime > 0.5 && currentTime > lastTime + 0.06 && isTabActive) {
+            if ((currentTime > 0.5 && currentTime > lastTime + 0.5 && isTabActive) || videoElement.playbackRate > 1) {
                 showPopup('popup');
                 videoElement.style.opacity = '0';
                 setTimeout(() => {
