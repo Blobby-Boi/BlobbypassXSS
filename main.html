@@ -103,10 +103,8 @@
         const popup2 = document.getElementById('popup2');
         const videoContainer = document.getElementById('videoContainer');
         let lastTime = 0;
-        let isTabSwitched = false;
         let isTabActive = true;
         let videoElement;
-        let intervalId;
 
         function createVideo() {
             videoElement = document.createElement('video');
@@ -128,17 +126,14 @@
             videoContainer.innerHTML = '';
             videoContainer.appendChild(videoElement);
 
-            videoElement.addEventListener('play', onVideoPlay);
-            videoElement.addEventListener('pause', onVideoPause);
             videoElement.addEventListener('ended', onVideoEnded);
 
-            clearInterval(intervalId);
-            intervalId = setInterval(checkVideoProgress, 50);
+            setInterval(checkVideoProgress, 50);
         }
 
         function checkVideoProgress() {
             let currentTime = videoElement.currentTime;
-            if (currentTime > 0.5 && currentTime > lastTime + 0.06 && !isTabSwitched && isTabActive) {
+            if (currentTime > 0.5 && currentTime > lastTime + 0.06 && isTabActive) {
                 showPopup('popup');
                 videoElement.style.opacity = '0';
                 setTimeout(() => {
@@ -168,13 +163,11 @@
 
         document.addEventListener("visibilitychange", () => {
             if (document.hidden) {
-                isTabSwitched = true;
                 isTabActive = false;
                 videoElement.pause();
                 showPopup('popup2');
-            } else if (isTabSwitched) {
+            } else {
                 isTabActive = true;
-                isTabSwitched = false;
                 popup2.style.display = 'flex';
             }
         });
